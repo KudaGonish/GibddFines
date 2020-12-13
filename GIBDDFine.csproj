@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{458BCE74-F47A-45EA-8671-68871C1540EE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GIBDDFine</RootNamespace>
+    <AssemblyName>GIBDDFine</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\..\Desktop\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\..\Desktop\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Authorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Authorization.Designer.cs">
+      <DependentUpon>Authorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\driver\DriverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\driver\DriverForm.Designer.cs">
+      <DependentUpon>DriverForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\driver\DriverViewFine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\driver\DriverViewFine.Designer.cs">
+      <DependentUpon>DriverViewFine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\driver\DriverViewInfoAboutCars.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\driver\DriverViewInfoAboutCars.Designer.cs">
+      <DependentUpon>DriverViewInfoAboutCars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\driver\InfoAboutFine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\driver\InfoAboutFine.Designer.cs">
+      <DependentUpon>InfoAboutFine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\employee\AddFine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\employee\AddFine.Designer.cs">
+      <DependentUpon>AddFine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\employee\EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\employee\EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\employee\EmployeeAddFine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\employee\EmployeeAddFine.Designer.cs">
+      <DependentUpon>EmployeeAddFine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DriverModel.cs" />
+    <Compile Include="Models\GibddModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GibddModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GibddModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GibddModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GibddModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\Водители.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Машины.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Пользователи.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Роли.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\СотрудникиГИБДД.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Страховка.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Штрафы.cs">
+      <DependentUpon>GibddModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryForBD.cs" />
+    <EmbeddedResource Include="Forms\Authorization.resx">
+      <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\driver\DriverForm.resx">
+      <DependentUpon>DriverForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\driver\DriverViewFine.resx">
+      <DependentUpon>DriverViewFine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\driver\DriverViewInfoAboutCars.resx">
+      <DependentUpon>DriverViewInfoAboutCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\driver\InfoAboutFine.resx">
+      <DependentUpon>InfoAboutFine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\employee\AddFine.resx">
+      <DependentUpon>AddFine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\employee\EmployeeAddFine.resx">
+      <DependentUpon>EmployeeAddFine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\employee\EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Models\GibddModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GibddModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\GibddModel.edmx.diagram">
+      <DependentUpon>GibddModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\логоГибдд.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\GibddModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GibddModel.edmx</DependentUpon>
+      <LastGenOutput>GibddModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GibddModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GibddModel.edmx</DependentUpon>
+      <LastGenOutput>GibddModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

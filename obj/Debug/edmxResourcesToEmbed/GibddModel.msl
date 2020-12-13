@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ГИБДДModelContainer" CdmEntityContainer="GibddEntities">
+    <EntitySetMapping Name="Водители">
+      <EntityTypeMapping TypeName="ГИБДДModel.Водители">
+        <MappingFragment StoreEntitySet="Водители">
+          <ScalarProperty Name="NomerPrav" ColumnName="NomerPrav" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Машины">
+      <EntityTypeMapping TypeName="ГИБДДModel.Машины">
+        <MappingFragment StoreEntitySet="Машины">
+          <ScalarProperty Name="GosNomer" ColumnName="GosNomer" />
+          <ScalarProperty Name="MarkaAvto" ColumnName="MarkaAvto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Пользователи">
+      <EntityTypeMapping TypeName="ГИБДДModel.Пользователи">
+        <MappingFragment StoreEntitySet="Пользователи">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Роли">
+      <EntityTypeMapping TypeName="ГИБДДModel.Роли">
+        <MappingFragment StoreEntitySet="Роли">
+          <ScalarProperty Name="RoleNum" ColumnName="RoleNum" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="СотрудникиГИБДД">
+      <EntityTypeMapping TypeName="ГИБДДModel.СотрудникиГИБДД">
+        <MappingFragment StoreEntitySet="СотрудникиГИБДД">
+          <ScalarProperty Name="TabelNum" ColumnName="TabelNum" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateBith" ColumnName="DateBith" />
+          <ScalarProperty Name="Doljnost" ColumnName="Doljnost" />
+          <ScalarProperty Name="Oklad" ColumnName="Oklad" />
+          <ScalarProperty Name="HomeAdress" ColumnName="HomeAdress" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Страховка">
+      <EntityTypeMapping TypeName="ГИБДДModel.Страховка">
+        <MappingFragment StoreEntitySet="Страховка">
+          <ScalarProperty Name="StrahovoiNomer" ColumnName="StrahovoiNomer" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="Avto" ColumnName="Avto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Штрафы">
+      <EntityTypeMapping TypeName="ГИБДДModel.Штрафы">
+        <MappingFragment StoreEntitySet="Штрафы">
+          <ScalarProperty Name="NomerShtrafa" ColumnName="NomerShtrafa" />
+          <ScalarProperty Name="SotrudnikTabel" ColumnName="SotrudnikTabel" />
+          <ScalarProperty Name="GosNomer" ColumnName="GosNomer" />
+          <ScalarProperty Name="MarkaAvto" ColumnName="MarkaAvto" />
+          <ScalarProperty Name="OpisanieShtrafa" ColumnName="OpisanieShtrafa" />
+          <ScalarProperty Name="SumShtrafa" ColumnName="SumShtrafa" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="РолиПользователи" TypeName="ГИБДДModel.РолиПользователи" StoreEntitySet="РолиПользователи">
+      <EndProperty Name="Пользователи">
+        <ScalarProperty Name="IdUser" ColumnName="idUser" />
+      </EndProperty>
+      <EndProperty Name="Роли">
+        <ScalarProperty Name="RoleNum" ColumnName="RoleNum" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

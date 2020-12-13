@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ГИБДДModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Водители">
+    <Key>
+      <PropertyRef Name="NomerPrav" />
+    </Key>
+    <Property Name="NomerPrav" Type="Int32" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Пользователи" Relationship="Self.FK_Водители_Пользователи" FromRole="Водители" ToRole="Пользователи" />
+    <NavigationProperty Name="Страховка" Relationship="Self.FK_Страховка_Водители" FromRole="Водители" ToRole="Страховка" />
+  </EntityType>
+  <EntityType Name="Машины">
+    <Key>
+      <PropertyRef Name="GosNomer" />
+    </Key>
+    <Property Name="GosNomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MarkaAvto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Страховка" Relationship="Self.FK_Страховка_Машины" FromRole="Машины" ToRole="Страховка" />
+    <NavigationProperty Name="Штрафы" Relationship="Self.FK_Штрафы_Машины" FromRole="Машины" ToRole="Штрафы" />
+  </EntityType>
+  <EntityType Name="Пользователи">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Водители" Relationship="Self.FK_Водители_Пользователи" FromRole="Пользователи" ToRole="Водители" />
+    <NavigationProperty Name="СотрудникиГИБДД" Relationship="Self.FK_Сотрудники_ГИБДД_Пользователи" FromRole="Пользователи" ToRole="СотрудникиГИБДД" />
+    <NavigationProperty Name="Роли" Relationship="Self.РолиПользователи" FromRole="Пользователи" ToRole="Роли" />
+  </EntityType>
+  <EntityType Name="Роли">
+    <Key>
+      <PropertyRef Name="RoleNum" />
+    </Key>
+    <Property Name="RoleNum" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Пользователи" Relationship="Self.РолиПользователи" FromRole="Роли" ToRole="Пользователи" />
+  </EntityType>
+  <EntityType Name="СотрудникиГИБДД">
+    <Key>
+      <PropertyRef Name="TabelNum" />
+    </Key>
+    <Property Name="TabelNum" Type="Int32" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateBith" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Doljnost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Oklad" Type="Int32" Nullable="false" />
+    <Property Name="HomeAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNum" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Пользователи" Relationship="Self.FK_Сотрудники_ГИБДД_Пользователи" FromRole="СотрудникиГИБДД" ToRole="Пользователи" />
+    <NavigationProperty Name="Штрафы" Relationship="Self.FK_Штрафы_Сотрудники_ГИБДД" FromRole="СотрудникиГИБДД" ToRole="Штрафы" />
+  </EntityType>
+  <EntityType Name="Страховка">
+    <Key>
+      <PropertyRef Name="StrahovoiNomer" />
+      <PropertyRef Name="Owner" />
+      <PropertyRef Name="Avto" />
+    </Key>
+    <Property Name="StrahovoiNomer" Type="Int32" Nullable="false" />
+    <Property Name="Owner" Type="Int32" Nullable="false" />
+    <Property Name="Avto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Водители" Relationship="Self.FK_Страховка_Водители" FromRole="Страховка" ToRole="Водители" />
+    <NavigationProperty Name="Машины" Relationship="Self.FK_Страховка_Машины" FromRole="Страховка" ToRole="Машины" />
+  </EntityType>
+  <EntityType Name="Штрафы">
+    <Key>
+      <PropertyRef Name="NomerShtrafa" />
+      <PropertyRef Name="SotrudnikTabel" />
+      <PropertyRef Name="GosNomer" />
+    </Key>
+    <Property Name="NomerShtrafa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SotrudnikTabel" Type="Int32" Nullable="false" />
+    <Property Name="GosNomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MarkaAvto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OpisanieShtrafa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SumShtrafa" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Машины" Relationship="Self.FK_Штрафы_Машины" FromRole="Штрафы" ToRole="Машины" />
+    <NavigationProperty Name="СотрудникиГИБДД" Relationship="Self.FK_Штрафы_Сотрудники_ГИБДД" FromRole="Штрафы" ToRole="СотрудникиГИБДД" />
+  </EntityType>
+  <Association Name="FK_Водители_Пользователи">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="1" />
+    <End Role="Водители" Type="Self.Водители" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Водители">
+        <PropertyRef Name="NomerPrav" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Страховка_Водители">
+    <End Role="Водители" Type="Self.Водители" Multiplicity="1" />
+    <End Role="Страховка" Type="Self.Страховка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водители">
+        <PropertyRef Name="NomerPrav" />
+      </Principal>
+      <Dependent Role="Страховка">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Страховка_Машины">
+    <End Role="Машины" Type="Self.Машины" Multiplicity="1" />
+    <End Role="Страховка" Type="Self.Страховка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Машины">
+        <PropertyRef Name="GosNomer" />
+      </Principal>
+      <Dependent Role="Страховка">
+        <PropertyRef Name="Avto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Штрафы_Машины">
+    <End Role="Машины" Type="Self.Машины" Multiplicity="1" />
+    <End Role="Штрафы" Type="Self.Штрафы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Машины">
+        <PropertyRef Name="GosNomer" />
+      </Principal>
+      <Dependent Role="Штрафы">
+        <PropertyRef Name="GosNomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудники_ГИБДД_Пользователи">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="1" />
+    <End Role="СотрудникиГИБДД" Type="Self.СотрудникиГИБДД" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="СотрудникиГИБДД">
+        <PropertyRef Name="TabelNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Штрафы_Сотрудники_ГИБДД">
+    <End Role="СотрудникиГИБДД" Type="Self.СотрудникиГИБДД" Multiplicity="1" />
+    <End Role="Штрафы" Type="Self.Штрафы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СотрудникиГИБДД">
+        <PropertyRef Name="TabelNum" />
+      </Principal>
+      <Dependent Role="Штрафы">
+        <PropertyRef Name="SotrudnikTabel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="РолиПользователи">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="*" />
+    <End Role="Роли" Type="Self.Роли" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="GibddEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Водители" EntityType="Self.Водители" />
+    <EntitySet Name="Машины" EntityType="Self.Машины" />
+    <EntitySet Name="Пользователи" EntityType="Self.Пользователи" />
+    <EntitySet Name="Роли" EntityType="Self.Роли" />
+    <EntitySet Name="СотрудникиГИБДД" EntityType="Self.СотрудникиГИБДД" />
+    <EntitySet Name="Страховка" EntityType="Self.Страховка" />
+    <EntitySet Name="Штрафы" EntityType="Self.Штрафы" />
+    <AssociationSet Name="FK_Водители_Пользователи" Association="Self.FK_Водители_Пользователи">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Водители" EntitySet="Водители" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Страховка_Водители" Association="Self.FK_Страховка_Водители">
+      <End Role="Водители" EntitySet="Водители" />
+      <End Role="Страховка" EntitySet="Страховка" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Страховка_Машины" Association="Self.FK_Страховка_Машины">
+      <End Role="Машины" EntitySet="Машины" />
+      <End Role="Страховка" EntitySet="Страховка" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Штрафы_Машины" Association="Self.FK_Штрафы_Машины">
+      <End Role="Машины" EntitySet="Машины" />
+      <End Role="Штрафы" EntitySet="Штрафы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудники_ГИБДД_Пользователи" Association="Self.FK_Сотрудники_ГИБДД_Пользователи">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="СотрудникиГИБДД" EntitySet="СотрудникиГИБДД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Штрафы_Сотрудники_ГИБДД" Association="Self.FK_Штрафы_Сотрудники_ГИБДД">
+      <End Role="СотрудникиГИБДД" EntitySet="СотрудникиГИБДД" />
+      <End Role="Штрафы" EntitySet="Штрафы" />
+    </AssociationSet>
+    <AssociationSet Name="РолиПользователи" Association="Self.РолиПользователи">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Роли" EntitySet="Роли" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
