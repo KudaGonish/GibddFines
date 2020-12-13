@@ -30,7 +30,10 @@ namespace GIBDDFine.Forms.driver
         }
         private void payButton_Click(object sender, EventArgs e)
         {
-            QueryForBD.updateFine(driverModel.Find(i => i.номер == i.номер).номерШтрафа);
+            if(statusLabel.Text == "Оплачено")
+                MessageBox.Show("Штраф уже был опачен ранее");
+            else if(statusLabel.Text == "Не оплачено")
+                QueryForBD.updateFine(driverModel.Find(i => i.номер == i.номер).номерШтрафа);
         }
     }
 }
